@@ -3,12 +3,16 @@ import * as actionType from '../Actions/ActionType';
 const bingoReducer = (state = {
     isFetching: false,
     lastBall: null,
-    message: '',
+    message: 'Hover over a ticket, to claim a winning one!',
     previousBalls: [],
-    gameStatus: 'Ongoing'
+    gameStatus: 'OnGoing'
 }, action) => {
     switch (action.type) {
 
+        case actionType.REMOVE_MESSAGE:
+            return { ...state,
+                message: null
+            }
         case actionType.REQUEST_TICKETS:
             return { ...state,
                 isFetching: true

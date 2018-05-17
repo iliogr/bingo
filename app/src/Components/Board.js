@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
-import Header from './Header';
+import React, {Component} from 'react'
+import Header from './Header'
+import Ticket from './Ticket'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as actions from '../Actions'
-import classNames from 'classnames/bind';
+import PropTypes from 'prop-types'
 
 class Board extends Component {
     render() {
@@ -27,32 +28,6 @@ class Board extends Component {
     }
 }
 
-class Ticket extends Component {
-
-    verifyClaim = (id, numbers) => {
-        this.props.verify(id, numbers);
-    }
-
-    render() {
-        return (
-            <div id="Ticket">
-                { this.props.numbers.map((num, i) => {
-                    return(
-                        <div key={i}
-                        className={classNames({
-                            "ticket-number": true,
-                            "marked": num.status
-                        })}>
-                            <span>{num.number}</span>
-                        </div>
-                    )
-                })}
-                <a className="win-button" onClick={()=>{this.verifyClaim(this.props.id, this.props.numbers)}}>Claim Winning Ticket</a>
-            </div>
-        );
-    }
-}
-
 const mapStateToProps = (state) => {
     return {
         fetching: state.bingoReducer.isFetching,
@@ -65,5 +40,9 @@ const mapDispatchToProps = (dispatch) => {
         ...actions,
     }, dispatch);
 }
+
+Board.propTypes = {
+    tickets: PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

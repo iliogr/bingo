@@ -3,18 +3,18 @@ import { Route } from 'react-router-dom'
 import Main from './Components/Main'
 import Success from './Components/Success'
 import {connect} from 'react-redux'
+import { withRouter } from 'react-router'
 
 class App extends Component {
     render() {
         return (
             <div id="App">
                 <Route exact={true} path="/" component={Main}/>
-                <Route exact={true} path="/success" component={Success}/>
+                <Route path="/success" component={Success}/>
             </div>
         );
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
@@ -22,4 +22,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

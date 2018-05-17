@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as actions from '../Actions'
+import PropTypes from 'prop-types'
 
 class Header extends Component {
-
-
     render() {
         return (
             <div id="Header">
@@ -24,7 +23,6 @@ class Header extends Component {
 
 
 class LastBall extends Component {
-
     render() {
         return (
             <div id="LastBall" className="fl-row">
@@ -54,6 +52,7 @@ class PreviousBalls extends Component {
                 </div>
                 {this.props.balls.length > 0 && (
                     <div className="fl-row">
+                        { /* shallow copy, so that we get them in reverse order */}
                         { this.props.balls.slice(0).reverse().map((ball, i) => {
                             return(
                                 <div key={i} className="fl">
@@ -84,5 +83,10 @@ const mapDispatchToProps = (dispatch) => {
         ...actions,
     }, dispatch);
 }
+
+Header.propTypes = {
+    ball: PropTypes.number,
+    previousBalls: PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

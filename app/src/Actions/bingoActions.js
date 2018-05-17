@@ -10,14 +10,19 @@ const api = axios.create({
 });
 
 
-
-
 export const lastBall = (number) => {
     return {
         type: actionType.LAST_BALL,
         lastBall: number
     }
 }
+
+export const removeMessage = () => {
+    return {
+        type: actionType.REMOVE_MESSAGE
+    }
+}
+
 
 const requestTickets = () => {
     return {
@@ -49,7 +54,7 @@ const requestVerification = () => {
 const verificationSuccess = (status) => {
     return {
         type: actionType.VERIFICATION_SUCCESS,
-        status: status
+        message: 'You are a winner!'
     }
 }
 
@@ -96,6 +101,7 @@ export const verifyTicket = (id, numbers) => {
             api.post(`/verify/${id}`, {numbers: numbers})
             .then((response) => {
                 if(response.data.status){
+                    console.log("success")
                     resolve(dispatch(verificationSuccess(response.data)))
                 }
                 else{

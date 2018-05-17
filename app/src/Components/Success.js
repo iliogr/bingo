@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom'
+import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 
 class Success extends Component {
     render() {
@@ -13,4 +15,15 @@ class Success extends Component {
         );
     }
 }
-export default Success;
+
+const mapStateToProps = (state) => {
+    return {
+        gameStatus: state.bingoReducer.gameStatus
+    };
+}
+
+Success.propTypes = {
+    gameStatus: PropTypes.string
+};
+
+export default connect(mapStateToProps)(Success);
