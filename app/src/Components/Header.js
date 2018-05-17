@@ -24,9 +24,6 @@ class Header extends Component {
 
 
 class LastBall extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -83,9 +80,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({
-      ...actions,
-   }, dispatch);
+    return bindActionCreators({
+        ...actions,
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

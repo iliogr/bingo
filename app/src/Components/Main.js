@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Board from './Board';
+import { Redirect } from 'react-router-dom'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as actions from '../Actions'
@@ -17,6 +18,9 @@ class Main extends Component {
     }
 
     render() {
+        if (this.props.gameStatus === 'Finished') {
+            return <Redirect to='/success' />;
+        }
         return (
             <div id="Main">
                 <Board />

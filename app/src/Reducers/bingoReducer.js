@@ -3,7 +3,9 @@ import * as actionType from '../Actions/ActionType';
 const bingoReducer = (state = {
     isFetching: false,
     lastBall: null,
-    previousBalls: []
+    message: '',
+    previousBalls: [],
+    gameStatus: 'Ongoing'
 }, action) => {
     switch (action.type) {
 
@@ -40,6 +42,26 @@ const bingoReducer = (state = {
                 newState.previousBalls.shift()
             }
             return newState;
+        case actionType.REQUEST_VERIFICATION:
+            return { ...state,
+                isFetching: true
+            }
+        case actionType.VERIFICATION_FAILED:
+            return { ...state,
+                isFetching: false,
+                message: action.message
+            }
+        case actionType.VERIFICATION_SUCCESS:
+            return { ...state,
+                isFetching: false,
+                message: action.message,
+                gameStatus: 'Finished'
+            }
+        case actionType.VERIFICATION_ERROR:
+            return { ...state,
+                isFetching: false,
+                message: action.message
+            }
         default:
             return state
     }

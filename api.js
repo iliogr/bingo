@@ -20,7 +20,13 @@ let draw = (req, res, next) => {
 }
 
 let verify = (req, res) => {
-
+    for(let ticketNumber of req.body.numbers){
+        if(drawnNumbers.includes(ticketNumber.number) === false){
+            res.send({message: "I am sorry, you don't have the winning ticket", status: false})
+            return;
+        }
+    }
+    res.send({message: "Congratulations! Your ticket is a winner.", status: true})
 }
 
 

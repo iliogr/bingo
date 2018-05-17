@@ -1,28 +1,25 @@
 import React, {Component} from 'react'
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Main from './Components/Main'
-
-// import {bindActionCreators} from 'redux'
-// import {connect} from 'react-redux'
-// import * as actions from './Actions'
-// import {withRouter} from 'react-router-dom'
-
+import Success from './Components/Success'
+import {connect} from 'react-redux'
 
 class App extends Component {
-
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    componentWillMount = () => {
-    }
-
     render() {
         return (
             <div id="App">
                 <Route exact={true} path="/" component={Main}/>
-            </div>);
+                <Route exact={true} path="/success" component={Success}/>
+            </div>
+        );
     }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+    return {
+        gameStatus: state.bingoReducer.gameStatus
+    };
+}
+
+export default connect(mapStateToProps)(App);

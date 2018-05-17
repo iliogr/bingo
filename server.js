@@ -25,7 +25,7 @@ let socketMiddleware = (req, res, next) => {
 
 app.get('/draw', socketMiddleware, api.draw)
 app.get('/tickets', api.createTickets)
-app.post('/verify', api.verify)
+app.post('/verify/:id', api.verify)
 
 server.listen(8888, () => {
    console.log("App listening on "+8888)

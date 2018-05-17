@@ -6,11 +6,6 @@ import * as actions from '../Actions'
 import classNames from 'classnames/bind';
 
 class Board extends Component {
-
-    componentDidMount = () => {
-
-    }
-
     render() {
         return (
             <div id="Board">
@@ -22,7 +17,7 @@ class Board extends Component {
 
                 {this.props.tickets ? (
                     <div className="bingo-board">
-                        { this.props.tickets.map((ticket) => <Ticket key={ticket.id} numbers={ticket.numbers} /> ) }
+                        { this.props.tickets.map((ticket) => <Ticket key={ticket.id} verify={this.props.verifyTicket} id={ticket.id} numbers={ticket.numbers} /> ) }
                     </div>
                 ) : (
                     <h3>Game is loading, Please wait ...</h3>
@@ -33,6 +28,11 @@ class Board extends Component {
 }
 
 class Ticket extends Component {
+
+    verifyClaim = (id, numbers) => {
+        this.props.verify(id, numbers);
+    }
+
     render() {
         return (
             <div id="Ticket">
@@ -47,6 +47,7 @@ class Ticket extends Component {
                         </div>
                     )
                 })}
+                <a className="win-button" onClick={()=>{this.verifyClaim(this.props.id, this.props.numbers)}}>Claim Winning Ticket</a>
             </div>
         );
     }
@@ -60,9 +61,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({
-      ...actions,
-   }, dispatch);
+    return bindActionCreators({
+        ...actions,
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
