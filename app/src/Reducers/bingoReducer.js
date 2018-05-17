@@ -2,7 +2,8 @@ import * as actionType from '../Actions/ActionType';
 
 const bingoReducer = (state = {
     isFetching: false,
-    lastBall: 0
+    lastBall: null,
+    previousBalls: []
 }, action) => {
     switch (action.type) {
 
@@ -20,6 +21,25 @@ const bingoReducer = (state = {
                 isFetching: false,
                 error: action.error
             }
+        case actionType.LAST_BALL:
+            let newState = {...state};
+            let newTickets = [...newState.tickets];
+            for(let ticket of newTickets){
+                for(let x of ticket.numbers){
+                    if(action.lastBall === x.number){
+                        x.status = true;
+                    }
+                }
+            }
+            newState.tickets = newTickets;
+            if(state.lastBall){
+                newState.previousBalls.push(state.lastBall);
+            }
+            newState.lastBall = action.lastBall;
+            if(newState.previousBalls.length > 5){
+                newState.previousBalls.shift()
+            }
+            return newState;
         default:
             return state
     }

@@ -46,7 +46,7 @@ class Ticket {
         while(numbers.length < 25){
             selectedNumber = Math.floor(Math.random() * 100) + 1;
             if(numbers.includes(selectedNumber) === false){
-                numbers.push(selectedNumber);
+                numbers.push({number: selectedNumber, status: false});
             }
         }
         return numbers;

@@ -3,6 +3,7 @@ import Header from './Header';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as actions from '../Actions'
+import classNames from 'classnames/bind';
 
 class Board extends Component {
 
@@ -35,13 +36,17 @@ class Ticket extends Component {
     render() {
         return (
             <div id="Ticket">
-                    { this.props.numbers.map((number, i) => {
-                        return(
-                            <div key={i} className="ticket-number">
-                                <span>{number}</span>
-                            </div>
-                        )
-                    })}
+                { this.props.numbers.map((num, i) => {
+                    return(
+                        <div key={i}
+                        className={classNames({
+                            "ticket-number": true,
+                            "marked": num.status
+                        })}>
+                            <span>{num.number}</span>
+                        </div>
+                    )
+                })}
             </div>
         );
     }

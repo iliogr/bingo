@@ -858,18 +858,15 @@ html {
       font-family: "Roboto-Black", sans-serif;
       font-weight: 800;
       font-size: 22px; }
-  #Header #PreviousBalls {
-    position: relative;
-    float: right; }
-    #Header #PreviousBalls h4 {
-      margin: 0 0 5px 0;
-      font-size: 11px; }
-    #Header #PreviousBalls .previous-ball {
-      background: white;
-      border-radius: 4px;
-      padding: 5px 15px 5px 15px;
-      margin-right: 10px; }
-      #Header #PreviousBalls .previous-ball span {
-        font-family: "Roboto-Black", sans-serif;
-        font-weight: 800;
-        font-size: 14px; }
+  #Header #PreviousBalls h4 {
+    margin: 0 0 5px 0;
+    font-size: 11px; }
+  #Header #PreviousBalls .previous-ball {
+    background: white;
+    border-radius: 4px;
+    padding: 5px 15px 5px 15px;
+    margin-right: 10px; }
+    #Header #PreviousBalls .previous-ball span {
+      font-family: "Roboto-Black", sans-serif;
+      font-weight: 800;
+      font-size: 14px; }
