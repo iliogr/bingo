@@ -1,0 +1,56 @@
+#Board{
+
+    $width: 800px;
+    $gap: 30px;
+    $tile: calc((#{$width} - (#{$gap}*3))/2);
+
+    position: absolute;
+    width: $width;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    // margin-top: calc((100vh - #{$height})/2);
+    background: $primary;
+
+    .bingo-board{
+        display: grid;
+        grid-template-columns: $tile $tile;
+        grid-template-rows: $tile $tile;
+        grid-column-gap: $gap;
+        grid-row-gap: $gap;
+        padding: $gap;
+    }
+
+
+    #Ticket{
+        background: white;
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        grid-template-rows: repeat(5, auto);
+
+        .ticket-number{
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid $border;
+            span{
+                display: block;
+                font-size: 22px;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 29px;
+                color: $num-text;
+            }
+            &.marked{
+                background: $strong;
+                border: none;
+                span{
+                    color: $primary;
+                }
+            }
+        }
+
+
+    }
+
+}

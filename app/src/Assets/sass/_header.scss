@@ -1,0 +1,52 @@
+#Header{
+
+    background: $accent;
+    position: relative;
+    box-sizing: border-box; //don't want padding to calculate as extra
+    height: 100px;
+    padding: 25px 50px 25px 50px;
+
+    #LastBall{
+        h2{
+            font-size: 18px;
+            font-family: $rl;
+            margin: 10px 15px 0 0;
+        }
+
+        .current-ball-num{
+            padding: 5px 15px 5px 15px;
+            background: white;
+            border: 2px solid $strong;
+            border-radius: 4px;
+
+            span{
+                color: $strong;
+                font-family: $rb;
+                font-weight: 800;
+                font-size: 22px;
+            }
+        }
+    }
+
+    #PreviousBalls{
+        position: relative;
+        float: right;
+        h4{
+            margin: 0 0 5px 0;
+            font-size: 11px;
+        }
+
+        .previous-ball{
+            background: white;
+            border-radius: 4px;
+            padding: 5px 15px 5px 15px;
+            margin-right: 10px;
+
+            span{
+                font-family: $rb;
+                font-weight: 800;
+                font-size: 14px;
+            }
+        }
+    }
+}
