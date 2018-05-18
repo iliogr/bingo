@@ -1,6 +1,6 @@
 # bingo
 
-![Image of the game](./bingo-image.png)
+![Image of the game](./bingo-img.png)
 
 
 ## Requirements
