@@ -1,4 +1,8 @@
 # bingo
+
+![Image of the game](./bingo-image.png)
+
+
 ## Requirements
 * node: ^8.11.1
 * npm: ^6.0.0
