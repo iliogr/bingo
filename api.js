@@ -47,15 +47,18 @@ class Ticket {
     }
 
     ticketNumbers = () => {
-        let numbers = [];
-        let selectedNumber = null;
-        while(numbers.length < 25){
-            selectedNumber = Math.floor(Math.random() * 100) + 1;
-            if(numbers.includes(selectedNumber) === false){
-                numbers.push({number: selectedNumber, status: false});
+
+        let chosenNumbers = [];
+        let randomNumber = null;
+        let test = [];
+
+        while(chosenNumbers.length < 25){
+            let selectedNumber = Math.floor(Math.random() * 100) + 1;
+            if(chosenNumbers.map(function(e) { return e.number; }).indexOf(selectedNumber) === -1){
+                chosenNumbers.push({number: selectedNumber, status: false});
             }
         }
-        return numbers;
+        return chosenNumbers;
     }
 }
 
