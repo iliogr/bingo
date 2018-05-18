@@ -62,5 +62,6 @@ class Ticket {
 module.exports = {
     draw: draw,
     verify: verify,
-    createTickets: createTickets
+    createTickets: createTickets,
+    TicketClass: Ticket
 }

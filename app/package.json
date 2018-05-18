@@ -27,7 +27,15 @@
         "start": "npm-run-all -p watch-css start-js",
         "build-js": "react-scripts build",
         "build": "npm-run-all build-css build-js",
-        "test": "react-scripts test --env=jsdom",
+        "test": "./node_modules/.bin/mocha -w ./src/Tests/helpers/browser.js ./src/Tests/index.js",
         "eject": "react-scripts eject"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0-beta.47",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
+        "jsdom": "^11.10.0",
+        "mocha": "^5.1.1",
+        "react-addons-test-utils": "^15.6.2"
     }
 }

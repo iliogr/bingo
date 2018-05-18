@@ -10,8 +10,7 @@ class Banner extends Component {
     cancel = () => {
         this.props.removeMessage();
     }
-
-
+    
     render() {
         return (
             <div id="Banner">
